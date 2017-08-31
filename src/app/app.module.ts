@@ -5,10 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RoomsComponent } from './rooms/rooms.component';
+import { RoomComponent } from './room/room.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RoomsComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,
