@@ -1,7 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+
+import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import { ApolloModule } from 'apollo-angular';
+
+const apolloClient = new ApolloClient({
+  networkInterface: createNetworkInterface({
+    uri: 'http://localhost:3000'
+  })
+});
+
+export function provideClient(): ApolloClient {
+  return apolloClient;
+}
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,8 +27,7 @@ import { RoomComponent } from './room/room.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
+    ApolloModule.forRoot(provideClient),
     AppRoutingModule
   ],
   providers: [],
