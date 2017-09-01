@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "musicql",
       "styles": [
-        "styles.scss"
+        "styles/main.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
