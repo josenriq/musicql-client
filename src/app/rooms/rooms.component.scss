@@ -3,11 +3,10 @@
 
 .room__link {
   display: block;
-  transition: all .6s;
-
   color: $gray-700;
   text-decoration: none;
 
+  transition: all .6s;
   &:hover, &:active, &:focus {
     transition: all .3s;
     color: theme-color('primary');

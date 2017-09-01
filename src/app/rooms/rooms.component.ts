@@ -11,7 +11,7 @@ import gql from 'graphql-tag';
 })
 export class RoomsComponent implements OnInit {
 
-  rooms$: Observable<any>;
+  rooms$: any;
 
   constructor(private apollo: Apollo) {
     const RoomsQuery = gql`
@@ -46,9 +46,7 @@ export class RoomsComponent implements OnInit {
         mutation: AddRoomMutation,
         variables: { name }
       }).subscribe(({ data }) => {
-        console.log('done', data);
-      }, (error) => {
-        console.log('error adding room', error);
+        this.rooms$.refetch();
       });
     }
   }
