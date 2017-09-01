@@ -44,10 +44,25 @@ export class RoomsComponent implements OnInit {
       `;
       this.apollo.mutate({
         mutation: AddRoomMutation,
-        variables: { name }
-      }).subscribe(({ data }) => {
-        this.rooms$.refetch();
-      });
+        variables: { name },
+        optimisticResponse: {
+          __typename: 'Mutation',
+          addRoom: {
+            __typename: 'Room',
+            _id: 'unknown',
+            name: name
+          }
+        },
+        updateQueries: {
+          RoomsQuery: (prev, { mutationResult }) => {
+            const newRoom = mutationResult.data.addRoom;
+            const prevRooms = prev.rooms;
+            return {
+              rooms: [...prevRooms, newRoom]
+            };
+          },
+        }
+      }).subscribe();
     }
   }
 
