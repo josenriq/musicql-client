@@ -1,3 +1,21 @@
-<p>
-  rooms works!
-</p>
+<div class="container py-5 text-center">
+  <p class="text-muted lead">Rooms</p>
+
+  <div *ngIf="(rooms$ | async)?.length === 0">
+    No rooms yet.
+  </div>
+
+  <a *ngFor="let room of rooms$ | async"
+    class="room__link"
+    href="javascript:void(0)"
+    [routerLink]="['/', room._id]">
+    <h1>{{ room.name }}</h1>
+  </a>
+
+  <button type="button"
+    class="btn btn-link btn-sm"
+    (click)="createRoom()">
+    New Room
+  </button>
+
+</div>

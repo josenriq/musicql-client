@@ -1,0 +1,16 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+
+.room__link {
+  display: block;
+  transition: all .6s;
+
+  color: $gray-700;
+  text-decoration: none;
+
+  &:hover, &:active, &:focus {
+    transition: all .3s;
+    color: theme-color('primary');
+    transform: scale(1.5);
+  }
+}
